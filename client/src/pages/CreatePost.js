@@ -17,7 +17,7 @@ export default function CreatePost() {
     data.set('content', content);
     data.set('file', files[0]);
     ev.preventDefault();
-    const response = await fetch('https://mern-blog-master-aett.onrender.com', {
+    const response = await fetch('https://mern-blog-master-1.onrender.com/post', {
       method: 'POST',
       body: data,
       credentials: 'include',

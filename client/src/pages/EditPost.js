@@ -11,7 +11,7 @@ export default function EditPost() {
   const [redirect,setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch('https://mern-blog-master-aett.onrender.com'+id)
+  fetch(`https://mern-blog-master-1.onrender.com/post/${id}`)
       .then(response => {
         response.json().then(postInfo => {
           setTitle(postInfo.title);
