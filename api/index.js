@@ -71,10 +71,15 @@ app.post('/login', async (req, res) => {
           console.error(err);
           return res.status(500).json('internal error');
         }
-        res.cookie('token', token, { httpOnly: true }).json({
-          id: userDoc._id,
-          username,
-        });
+        res.cookie('token', token, {
+  httpOnly: true,
+  sameSite: 'none',
+  secure: true,
+}).json({
+  id: userDoc._id,
+  username,
+});
+
       });
     } else {
       res.status(400).json('wrong credentials');
@@ -97,7 +102,13 @@ app.get('/profile', (req, res) => {
 
 // Logout
 app.post('/logout', (req, res) => {
-  res.cookie('token', '', { httpOnly: true, expires: new Date(0) }).json('ok');
+ res.cookie('token', '', {
+  httpOnly: true,
+  sameSite: 'none',
+  secure: true,
+  expires: new Date(0),
+}).json('ok');
+
 });
 
 // Create Post
