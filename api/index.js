@@ -18,7 +18,7 @@ const secret = process.env.JWT_SECRET || 'default_jwt_secret';
 // CORS configuration
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://mern-blog-master-sooty.vercel.app';
 const corsOptions = {
-  origin: 'https://mern-blog-master-sooty.vercel.app',
+  origin: ['https://mern-blog-master-sooty.vercel.app'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
