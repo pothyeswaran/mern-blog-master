@@ -7,7 +7,7 @@ export default function Post({_id,title,summary,cover,content,createdAt,author})
     <div className="post">
       <div className="image">
         <Link to={`/post/${_id}`}>
-          <img src={'mern-blog-master-api.vercel.app'+cover} alt=""/>
+          <img src={'https://mern-blog-master-api.vercel.app'+cover} alt=""/>
         </Link>
       </div>
       <div className="texts">
