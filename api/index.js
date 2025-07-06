@@ -17,18 +17,16 @@ const secret = process.env.JWT_SECRET || 'default_jwt_secret';
 
 // CORS configuration
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || 'https://mern-blog-master-sooty.vercel.app';
-app.use(cors({ credentials: true, origin: CLIENT_ORIGIN }));
-app.options('*', cors({ credentials: true, origin: CLIENT_ORIGIN }));
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', CLIENT_ORIGIN);
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  next();
-});
+const corsOptions = {
+  origin: 'https://mern-blog-master-sooty.vercel.app',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+
+
 
 app.use(express.json());
 app.use(cookieParser());
