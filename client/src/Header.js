@@ -7,6 +7,9 @@ export default function Header() {
   useEffect(() => {
     fetch('https://mern-blog-master-api.vercel.app/profile', {
       credentials: 'include',
+       headers: {
+    'Content-Type': 'application/json',
+  },
     }).then(response => {
       response.json().then(userInfo => {
         setUserInfo(userInfo);
